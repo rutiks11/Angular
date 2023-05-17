@@ -1,0 +1,11 @@
+
+.example-container mat-form-field + mat-form-field {
+    margin-left: 100px;
+}
+
+.container 
+{
+  align-items: center;
+  display: grid;
+  grid-template-columns: 900px 10%;
+}
