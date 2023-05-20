@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+
+<body>
+  <div *ngIf="!fname; else forminfo" class="form-group">
+<form [formGroup]="Customer" (ngSubmit)="addPost(Customer.value)">
+
+    <div class="header">
+      <h1 style="color: fuchsia">Contact Our</h1>
+      <h1> Customer Support Center </h1>
+    </div>  
+    <img class="img" src="https://freepngimg.com/thumb/macbook/28586-4-macbook-transparent.png" width="150" height="150">  
+    <hr>
+   
+    <div class="info"> 
+
+      <div class="example-container">
+
+              <h2 style="padding-bottom: 1px;">Contact Information</h2>
+              <h3>Please fill out your Contact Information below</h3>
+
+              <mat-form-field class="form-group" hintLabel="First Name" appearance="fill">
+                <input matInput formControlName="fname" placeholder="First Name">
+                <small [class.d-none]="Customer.get('fname')?.valid || Customer.get('fname')?.untouched" class="text-danger">Input should be Only Letters</small>
+              </mat-form-field>
+              
+              <mat-form-field class="form-group" hintLabel="Last Name" appearance="fill">
+                <input matInput formControlName="lname" placeholder="Last Name">
+                <small [class.d-none]="Customer.get('lname')?.valid || Customer.get('lname')?.untouched" class="text-danger">Input should be Only Letters</small>
+              </mat-form-field>
+
+      </div>    
+            
+      <div>
+          <mat-form-field class="form-group" style="width: 525px;" hintLabel="Email" appearance="fill">
+            <input matInput formControlName="email" placeholder="abc@gmail.com">
+            <small [class.d-none]="Customer.get('email')?.valid || Customer.get('email')?.untouched" class="text-danger">Please Enter correct Email</small>
+            <!--untouched asel tr kahich nahi-->
+          </mat-form-field>
+          
+         <br>
+       
+          <mat-form-field class="form-group" style="width: 525px;" hintLabel="Contact Number" appearance="fill">
+            <input matInput formControlName="phone" placeholder="Phone">
+            <small [class.d-none]="Customer.get('phone')?.valid || Customer.get('phone')?.untouched" class="text-danger">10 Digits Only</small>
+          </mat-form-field>
+          
+          <br>
+       
+          <mat-form-field class="form-group" style="width: 525px;" hintLabel="Address" appearance="fill">
+            <input matInput formControlName="address" placeholder="Address">
+            <small [class.d-none]="Customer.get('address')?.valid || Customer.get('address')?.untouched" class="text-danger">Address is Mandatory</small>
+          </mat-form-field>    
+     
+          
+        </div>   
+
+      <div class="example-container">
+
+          <mat-form-field class="form-group" hintLabel="City" appearance="fill">
+            <input matInput formControlName="city" placeholder="City">
+            <small [class.d-none]="Customer.get('city')?.valid || Customer.get('city')?.untouched" class="text-danger">Minimum Four Letters</small>
+          </mat-form-field>
+          
+          <mat-form-field class="form-group" hintLabel="ZIP " appearance="fill">
+            <input matInput formControlName="zip" placeholder="ZIP code">
+            <small [class.d-none]="Customer.get('zip')?.valid || Customer.get('zip')?.untouched" class="text-danger">6 Digits Only</small>
+          </mat-form-field>
+  
+      </div> 
+
+    <div class="example-container">
+
+        <mat-form-field hintLabel="State">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state" [(ngModel)]="selectedValue" name="food">
+            <mat-option *ngFor="let State of states" [value]="State.value">
+              {{State.viewValue}}
+            </mat-option>
+          </mat-select>
+          <small [class.d-none]="Customer.get('state')?.valid || Customer.get('state')?.untouched" class="text-danger">Select State</small>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Add Query">
+          <mat-label>Add Query</mat-label>
+          <textarea formControlName="comment" matInput></textarea>
+          <small [class.d-none]="Customer.get('comment')?.valid || Customer.get('comment')?.untouched" class="text-danger">Minimum 30 Characters</small>
+        </mat-form-field>
+    
+    </div>
+        
+          <button mat-raised-button color="accent" [disabled] ="!Customer.valid"  matTooltip="Sure About the Given Information then Press">Submit Form</button>
+    
+    </div>
+
+</form>
+</div>
+
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+ 
+      <h1 style="font-weight: bolder;">Forms Submitted</h1>
+      <hr>
+      <h2>{{"Name of Customer : "+fname+" "+lname}}</h2>
+      <h2>{{"Email : "+email}}</h2>
+      <h2>{{"Contact Number : "+phone}}</h2>
+      <h2>{{"Address : "+address}}</h2>
+      <h2>{{"City : "+city}}</h2>
+      <h2>{{"ZIP : "+zip}}</h2>
+      <h2>{{"State : "+state}}</h2>
+      <h2>{{"Query : "+comment}}</h2>
+
+    </div>
+  </div>
+</ng-template>
+
+</body>
+</html>

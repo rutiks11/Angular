@@ -1,0 +1,17 @@
+
+.example-container mat-form-field + mat-form-field {
+    margin-left: 100px;
+    padding: auto;
+}
+
+.header
+{
+  padding: auto;
+  display: inline-table;
+}
+
+.img{
+  padding: auto;
+  margin-left: 90px; 
+  display: inline-table;
+}
